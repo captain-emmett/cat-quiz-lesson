@@ -10,24 +10,25 @@ function loadQuestion(question) {
     /* here is the first one */
     const questionText = document.getElementById('question-text');
     /* we need a variable that keeps track of an element called 'story-image' */
-
+    const questionImage = document.getElementById('question-image');
     /* we need a variable that keeps track of an element called 'choices' */
-
+    const choiceContainer = document.getElementById('choices');
     /* we need to set the story-text elements text to the questions text */
     questionText.textContent = questions[question].text;
     /* let's set the story images element source to questions[question].image */
-
+    questionImage.src = questions[question].image;
     /* we need to clear the choices div to make sure no other choices are there */
-
+    choiceContainer.textContent = '';
     /* we need to loop for each choice in the states[question].choices and loop within choice to get each personality*/
     for (const [choice, personality] of Object.entries(questions[question].choices)) {
         /* create a button element */
-
+        const button = document.createElement('button');
         /* populate the text of the button */
-
+        button.textContent = choice;
         button.className = 'choice-button';
         button.onclick = () => changeQuestion(currentQuestion + 1, personality);
         /* append the button to the choices */
+        choiceContainer.appendChild(button);
     }
 
 }
